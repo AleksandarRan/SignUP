@@ -1,0 +1,98 @@
+@font-face {
+    font-family: 'RegularTypeFont';
+    src: url('../fonts/Roboto-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'LightTypeFont';
+    src: url('../fonts/Roboto-Light.ttf');
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    color: black;
+}
+
+#registration_form {
+    background-color: #f2f2f2;
+    width: 450px;
+    height: 450px;
+    border: 2px solid rgb(74, 132, 238);
+    box-shadow: 0 0 4px rgba(74, 132, 238, .8);
+    padding: .750rem .950rem;
+    
+}
+
+#registration_form > .form-body > h5 {
+    font-family: 'RegularTypeFont', sans-serif;
+    color: rgb(5, 189, 118);
+    margin: .2rem .18rem;
+}
+
+#registration_form > .form-body > hr {
+    color: rgb(5, 189, 118);
+    margin: .2rem .18rem;
+}
+
+#registration_form > .form-body > .form-group {
+    width: calc(50% - .5rem);
+    border: 1px solid rgba(0, 0, 0, .5);
+    border-radius: .25rem;
+    /* height: auto; */
+    display: inline-block;
+    padding: .45rem;
+    margin: .2rem .18rem;
+}
+
+#registration_form > .form-body > .form-group > label {
+    font-family: 'LightTypeFont', sans-serif;
+    font-weight: 300;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: .25rem;
+}
+
+#registration_form > .form-body > .form-group > input {
+    font-size: 8pt;
+    font-family: 'RegularTypeFont', sans-serif;
+    padding: .1rem .45rem;
+    display: block;
+    width: 100%;
+}
+
+ #registration_form > #submit_button {
+    border: none;
+    font-family: 'LightTypeFont', sans-serif;
+    font-size: 8pt;
+    border-radius: 5px;
+    text-transform: uppercase;
+    background: #ffb347;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ffcc33, #ffb347);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ffcc33, #ffb347); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    cursor: pointer;
+    padding: 2px 6px 1px 6px;
+    display: block;
+    margin-top: 60px;
+ }
+
+ #registration_form > .form-body > .form-group > #sex {
+    width: 100%;
+    font-family: 'LightTypeFont', sans-serif;
+    font-weight: 300;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: .1rem;
+    border: 1px solid rgba(0, 0, 0, .5);
+    border-radius: .2rem;
+    background-color: #ffffff;
+ }
+

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Registracija</title>
+
+        <!-- Nas CSS izgled -->
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+        <script src="assets/js/sweetalert.js"></script>
+    </head>
+    <body>
+        <form method="POST" id="registration_form">
+            <div class="form-body">
+                <h5>Licni podatci</h5>
+                <hr />
+                <div class="form-group">
+                    <label>Ime</label>
+                    <input type="text" name="firstName" placeholder="Unesi ime" />
+                </div>
+                <div class="form-group">
+                    <label>Prezime</label>
+                    <input type="text" name="lastName" placeholder="Unesi prezime" />
+                </div>
+                <div class="form-group">
+                    <label>Broj Telefona</label>
+                    <input type="text" name="phoneNumber" placeholder="Unesi telefon" />
+                </div>
+                <div class="form-group">
+                    <label>Grad</label>
+                    <input type="text" name="city" placeholder="Unesi grad" />
+                </div>
+                <div class="form-group">
+                    <label>Ulica</label>
+                    <input type="text" name="address" placeholder="Unesi ulicu" />
+                </div>
+                <div class="form-group">
+                    <label>Pol</label>
+                    <select name="sex" id="sex">
+                            <option value="Ostalo">Ostalo</option>
+                            <option value="Muski">Muski</option>
+                            <option value="Zenski">Zenski</option>
+                            </select>
+                </div>
+                <h5>Podatci o nalogu</h5>
+                <hr />
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" name="username" placeholder="Unesi username" />
+                </div>
+                <div class="form-group">
+                    <label>eMail</label>
+                    <input type="email" name="email" placeholder="Unesi mail" />
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" name="password" placeholder="Unesi password" />
+                </div>
+                <div class="form-group">
+                    <label>Confirm Password</label>
+                    <input type="password" name="conf-password" placeholder="Unesi conf password" />
+                </div>
+            </div>
+
+            <button type="submit" id="submit_button">Kreiraj</button>
+        </form>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            document.addEventListener('DOMContentLoaded', event => {
+                const submitButton = document.getElementById('submit_button'),
+                      formDetails  = document.getElementById('registration_form');
+                
+                if (submitButton != null) {
+                    submitButton.addEventListener('click', event => {
+                        event.preventDefault();
+                        
+                        const formHttp = new URLSearchParams();
+
+                        if (formDetails == null) throw new Error('Nema forme kreiran');
+
+                        const formData = new FormData(formDetails);
+                        /*console.log(formData.get('firstName'));*/
+
+                       
+                        const myArray = formData.get('firstName');
+                        if (formData.get('firstName').length < 1 || /\d+/.test(myArray)) {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Greska...',
+                                text: 'Nije unijet podatak ili ste unijeli broj! - ime'
+                                })
+                                     return;
+                                }
+
+                        const myArray2 = formData.get('lastName');
+
+                        if (myArray2.length < 1 || /\d+/.test(myArray2)) {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Greska...',
+                                text: 'Pogresno prezime'
+                                })
+                                     return;
+                                }
+
+                        const myArray3 = formData.get('phoneNumber');
+
+                        if (myArray3.length < 1 || /\D+/.test(myArray3)) {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Greska...',
+                                text: 'Pogresan broj telefona!'
+                                })
+                                     return;
+                                }
+
+                        const myArray4 = formData.get('city');
+
+                        if (myArray4.length < 1 || /\d+/.test(myArray4)) {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Greska...',
+                                text: 'Pogresan unos grada'
+                                })
+                                     return;
+                                }
+
+                        const myArray5 = formData.get('address');
+
+                        if (myArray5.length < 1) {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Greska...',
+                                text: 'Prazan unos... adresa'
+                                })
+                                     return;
+                                }
+
+                        const myArray6 = formData.get('username');
+
+                        if (myArray6.length < 1) {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Greska...',
+                                text: 'Prazan unos... juzernejm'
+                                })
+                                     return;
+                                }
+
+                        const myArray7 = formData.get('email');
+
+                            if (myArray7.length < 1 || (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(myArray7)) == false) {
+                                Swal.fire({
+                                icon: 'error',
+                                title: 'Greska...',
+                                text: 'Pogresnan email'
+                                })
+                                    return;
+                                }
+
+                        const myArray8 = formData.get('password');
+
+                            if (myArray8.length < 6) {
+                                Swal.fire({
+                                icon: 'error',
+                                title: 'Greska...',
+                                text: 'Sifra mora imati najmanje 6 karaktera'
+                                })
+                                        return;
+                                }
+
+                        const myArray9 = formData.get('conf-password');
+                            if (myArray9 !== myArray8) {
+                                Swal.fire({
+                                icon: 'error',
+                                title: 'Greska...',
+                                text: 'Sifra se ne podudara'
+                                })
+                                    return;
+                                }
+
+                        for (const [key, value] of formData) {
+                            formHttp.append(key, value);
+                        }
+
+                        $.ajax({
+                            url: 'http://localhost/basic_crud/add.php',
+                            method: 'POST',
+                            processData: false,
+                            contentType: false,
+                            data: formHttp
+                        }, function success (response) {
+                            console.log(response);
+                        }, function error (error) {
+
+                        })
+                        // for (const [key, value] of formData) 
+                    });
+                }
+            });
+        </script>
+    </body>
+</html>
